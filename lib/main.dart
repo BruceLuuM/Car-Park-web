@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:parking_system/components/add_parking.dart';
+import 'package:parking_system/components/camera_view.dart';
 import 'package:parking_system/providers/auth_providers.dart';
 import 'package:parking_system/providers/parking_providers.dart';
 import 'package:parking_system/screen/register.dart';
@@ -94,9 +95,14 @@ class LoginScreen extends StatelessWidget {
   }
 }
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final parkingProvider = context.watch<ParkingProvider>();
@@ -134,14 +140,24 @@ class HomeScreen extends StatelessWidget {
           Expanded(
             child: Row(
               children: [
-                const Expanded(
-                  flex: 4,
-                  child: VideoStreamScreen(
-                    streamUrl:
-                        'http://localhost:5001/', // Replace with your streaming URL
-                  ),
-                ),
-                const Expanded(flex: 3, child: AddParkingScreen()),
+                // const Expanded(
+                //   flex: 4,
+                //   child: VideoStreamScreen(
+                //     streamUrl:
+                //         'http://localhost:5001/', // Replace with your streaming URL
+                //   ),
+                // ),
+                // Expanded(
+                //   flex: 4,
+                //   child: VideoCameraScreen(),
+                // ),
+                Expanded(
+                    flex: 3,
+                    child: AddParkingScreen(
+                      onUpdate: () {
+                        setState(() {});
+                      },
+                    )),
                 Expanded(
                   flex: 3,
                   child: Scaffold(
@@ -254,6 +270,8 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+
+                //thống kê
               ],
             ),
           ),

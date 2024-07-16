@@ -101,7 +101,7 @@ class ApiService {
   Future<Map<String, dynamic>> completeParking(
       int id, Map<String, dynamic> parkingData) async {
     final response = await http.patch(
-      Uri.parse('$baseUrl/parking/complete/$id'),
+      Uri.parse('$baseUrl/parking/complete'),
       body: jsonEncode(parkingData),
       headers: {'Content-Type': 'application/json'},
     );
