@@ -194,11 +194,21 @@ class _AddParkingScreenState extends State<AddParkingScreen> {
                 ],
               ),
               const SizedBox(height: 16.0),
-              TextField(
-                controller: cardValueController,
-                decoration: const InputDecoration(
-                  labelText: 'Card Id',
-                ),
+              Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      controller: cardValueController,
+                      decoration: const InputDecoration(
+                        labelText: 'Card Id',
+                      ),
+                    ),
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.open_in_full_sharp),
+                    onPressed: apiService.openServo,
+                  ),
+                ],
               ),
               const SizedBox(height: 16.0),
               TextField(

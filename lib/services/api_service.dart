@@ -116,6 +116,13 @@ class ApiService {
     return List<Map<String, dynamic>>.from(jsonDecode(response.body));
   }
 
+  openServo() {
+    final response = http.get(
+      Uri.parse('$baseUrl/parking/open-servo'),
+      headers: {'Content-Type': 'application/json'},
+    );
+  }
+
   Future<Map<String, dynamic>> getParking(int id) async {
     final response = await http.get(
       Uri.parse('$baseUrl/parking/$id'),

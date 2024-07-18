@@ -29,4 +29,9 @@ class ParkingProvider with ChangeNotifier {
     await _apiService.completeParking(id, parkingData);
     fetchParkings();
   }
+
+  openServo() {
+    _apiService.openServo();
+    fetchParkings();
+  }
 }
